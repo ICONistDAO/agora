@@ -25,7 +25,7 @@
           <template v-else-if="truncatedAddress">
             <div
               v-if="usersToken >= 0"
-              class="grid place-content-center place-items-center h-32 m:h-40 px-16 m:px-24 rounded-max typo-button-s text-white bg-primary bg-opacity-40 border-1 border-primary"
+              class="grid place-content-center place-items-center h-32 m:h-40 px-16 m:px-24 rounded-max typo-button-s text-white bg-primary bg-opacity-40"
             >
               <span>
                 <span>Voting power:</span>
@@ -48,7 +48,7 @@
     <client-only>
       <div :class="$style.headingContainer">
         <Container
-          class="grid gap-20 items-center py-10 bg-grey-400 transition-height duration-300 pointer-events-auto"
+          class="grid gap-20 items-center  px-32 transition-height duration-300 pointer-events-auto"
           :class="[
             $style.headingWrapper,
             {
@@ -70,7 +70,7 @@
                 >
               </div>
               <h2
-                class="typo-title-l origin-left transition-transform duration-300"
+                class="typo-title-l text-black origin-left transition-transform duration-300"
                 :class="$style.protocolTitle"
               >
                 {{ appName }}
@@ -86,7 +86,7 @@
               <a
                 v-for="(socialData, i) in socialsData.filter(({ url }) => url && url.includes('https'))"
                 :key="`socialData-${i}`"
-                class="grid place-items-center w-24 h-24 p-2 text-primary bg-primary bg-opacity-0 rounded-full transition-background duration-100 hover:bg-opacity-20"
+                class="grid place-items-center w-24 h-24 p-2 text-black bg-black bg-opacity-0 rounded-full transition-background duration-100 hover:bg-opacity-20"
                 :href="socialData.url"
                 :title="socialData.name"
                 target="_blank"
@@ -234,11 +234,17 @@ onUnmounted(() => {
 }
 
 .headingContainer {
-  height: 110px;
+  height: 310px;
+  background-image: url("~/assets/images/banner.png");
 }
 
 .headingWrapper {
+  position: absolute;
+  bottom: 0;
+  max-width: none;
   height: calcScrollValue(60px, 110px);
+  color: black;
+  backdrop-filter: blur(15px);
 }
 
 .protocolPicture {
