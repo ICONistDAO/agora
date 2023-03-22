@@ -13,6 +13,7 @@
       <client-only>
         <div class="grid gap-10 grid-flow-col items-center">
           <ControlsButtonIcon
+            v-if="isAdmin"
             name="Math/Plus"
             :to="{ name: 'create' }"
           />
@@ -111,9 +112,6 @@
               <h2 class="typo-title-l">
                 New proposal
               </h2>
-              <p class="text-grey-100 typo-text-medium">
-                You need to have a minimum of {{ minTokens }} tokens ({{ scoreAddress }}) in order to submit a proposal.
-              </p>
             </div>
             <ControlsButtonAction
               version="secondary"
@@ -169,6 +167,7 @@ const { SCORECallReadOnly } = useScoreService()
 const headingType = ref<HEADING>(null)
 const scrollRatio = ref<number>(0)
 const minTokens = ref<number>(0)
+const isAdmin = ref<boolean>(false)
 const hasNavigationTab = ref<boolean>(false)
 const activeTabIndex = ref<number>(0)
 const usersToken = ref<number>(0)
@@ -217,8 +216,11 @@ const unwatch = watch(isLoggedIn, async (value) => {
 }, { immediate: true })
 
 onMounted(async () => {
-  minTokens.value = parseInt(await SCORECallReadOnly<string>('minimumThreshold'), 16) / (10 ** Number(decimals))
-
+  // minTokens.value = parseInt(await SCORECallReadOnly<string>('minimumThreshold'), 16) / (10 ** Number(decimals))
+  const token = (await SCORECallReadOnly<{ _address: string, _id: string, _type: string }>('governanceTokenInfo'))._address
+  const isAdminCall = (await SCORECallReadOnly<string>('isAdmin', { account: address.value }, token))
+  isAdmin.value = isAdminCall === '0x1'
+  // isAdmin.value = await SCORECallReadOnly<boolean>('minimumThreshold')
   window.addEventListener('scroll', onPageScroll)
   onPageScroll()
 })
