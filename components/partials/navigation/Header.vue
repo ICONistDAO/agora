@@ -66,7 +66,7 @@
                 :class="$style.protocolPicture"
               >
                 <img
-                  :src="protocolLogo"
+                  :src="protocolLogo+'?pinataGatewayToken=oJhjrR8LQ2NWHUgZMg8wuUiy5dJs-SrfsQWlh4XYjNXB0y2INeaZfyjsf29OHaDR'"
                   :alt="appName"
                 >
               </div>
