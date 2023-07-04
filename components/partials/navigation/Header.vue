@@ -15,7 +15,7 @@
           class="ml-16 text-14"
           style="vertical-align: -webkit-baseline-middle; margin-left: 12px;"
           href="https://www.withiconists.com/"
-        >With ICONists</a>
+        >Home</a>
       </div>
       <client-only>
         <div class="grid gap-10 grid-flow-col items-center">
