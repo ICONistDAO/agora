@@ -1,15 +1,22 @@
 <template>
   <header class="sticky top-0 z-10 pointer-events-none">
     <Container class="grid gap-20 grid-flow-col items-center justify-between h-60 bg-grey-400 pointer-events-auto">
-      <NuxtLink
-        to="/"
-        class="text-0 text-primary"
-      >
-        <UtilsIcon
-          name="Logo/Agora"
-          class="w-84 h-auto"
-        />
-      </NuxtLink>
+      <div>
+        <NuxtLink
+          to="/"
+          class="text-0 text-primary"
+        >
+          <UtilsIcon
+            name="Logo/Agora"
+            class="w-84 h-auto"
+          />
+        </NuxtLink>
+        <a
+          class="ml-16 text-14"
+          style="vertical-align: -webkit-baseline-middle; margin-left: 12px;"
+          href="https://www.withiconists.com/"
+        >With ICONists</a>
+      </div>
       <client-only>
         <div class="grid gap-10 grid-flow-col items-center">
           <ControlsButtonIcon
